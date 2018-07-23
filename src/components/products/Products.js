@@ -2,14 +2,17 @@ import React, { Component } from 'react';
 import './Products.css';
 import { connect } from 'react-redux';
 //import * as actionTypes from '../store/actions';
+import Product from './Product/Product';
 
 
 class Products extends Component {
   render() {
     return (
-      <div className="App">
-        {this.props.products.map(e => <div key={e.id}>{e.price}</div>)}
-      </div>
+      <ul>
+        {this.props.products.map((currentElemenent,index) => {
+          return <Product productData={currentElemenent} key={currentElemenent.id} />
+        })}
+      </ul>
     );
   }
 }

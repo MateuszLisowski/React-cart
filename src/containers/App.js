@@ -3,13 +3,35 @@ import './App.css';
 import { connect } from 'react-redux';
 import * as actionTypes from '../store/actions';
 import Products from '../components/products/Products';
+import Cart from '../components/Cart/Cart';
 
 
 class App extends Component {
+  state = {
+    isCartVisible: false
+  }
+
+  hideCart = () => {
+    this.setState({isCartVisible: false});
+  }
+
+  showCart = () => {
+    this.setState({isCartVisible: true});
+  }
+
   render() {
     return (
       <div className="App">
-        <Products />
+        <Cart 
+          isCartVisible={this.state.isCartVisible} 
+          showCart={this.showCart} 
+          hideCart={this.hideCart} 
+          />
+        <header>
+        </header>
+        <main>
+          <Products />
+        </main>
       </div>
     );
   }
@@ -28,4 +50,4 @@ const mapDispatchToProps = dispatch => {
   }
 };
 
-export default connect(mapStateToProps, null)(App);
+export default connect(null, null)(App);

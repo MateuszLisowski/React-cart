@@ -114,7 +114,6 @@ const initialState = {
 };
 
 const reducer = (state = initialState, action) => {
-    console.log(state)
     switch (action.type) {
         case actionTypes.ADD_PERSON:
             const newPerson = {
