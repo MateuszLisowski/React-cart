@@ -7,7 +7,7 @@ const Cart = ({ isCartVisible, showCart, hideCart }) => {
     <div className='cartContent' onMouseLeave={hideCart}>
         <ul>
             <li className='singleCartProduct'>
-                <img />
+                <img src='https://imgurbancity.pl/files/sc_staging_images/brand/full_151/694/921/4_03/13406750.jpg' />
                 <div>
                     <p>
                     </p>

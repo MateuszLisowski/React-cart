@@ -1,8 +1,10 @@
 import React from 'react';
 import './Product.css';
 import SizeButton from './SizeButton/SizeButton';
+import Aux from '../../../hoc/Aux';
 
-const Product = ({ productData }) => (
+const Product = ({ productData }) => {
+    const isShow = productData.isVisible ? 
     <li className='singleProduct'>
         <img src={productData.imageSrc} alt={productData.alt} />
         <p className='productName'>
@@ -30,7 +32,13 @@ const Product = ({ productData }) => (
         <button className='addProduct'>
             Add product
         </button>
-    </li >
-);
+    </li> 
+    : null
+        return (
+            <Aux>
+                {isShow}
+            </Aux>      
+        )    
+    }
 
 export default Product

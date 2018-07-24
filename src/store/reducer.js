@@ -110,25 +110,65 @@ const initialState = {
             id: 12,
             isVisible: true
         }
-    ]
+    ],
+    selectedItem: 'Sort by price',
+    filterButtons: [
+        { value: 1, clicked: false },
+        { value: 2, clicked: false },
+        { value: 3, clicked: false },
+        { value: 4, clicked: false }
+    ],
 };
 
 const reducer = (state = initialState, action) => {
     switch (action.type) {
-        case actionTypes.ADD_PERSON:
-            const newPerson = {
-                id: Math.random(), // not really unique but good enough here!
-                name: action.personData.name,
-                age: action.personData.age
-            }
+        case actionTypes.SORT_PRODUCTS:
+            const clonedProducts = state.productInformations.slice(0)
+            const sortedProducts = action.selectedItem === 'Ascending' ?
+                clonedProducts.sort((a, b) => a.price - b.price) :
+                clonedProducts.sort((a, b) => b.price - a.price)
             return {
                 ...state,
-                persons: state.persons.concat(newPerson)
+                productInformations: sortedProducts,
+                selectedItem: action.selectedItem
             }
-        case actionTypes.REMOVE_PERSON:
+        case actionTypes.FILTER_PRODUCTS:
+            const clonedFilterButtons = state.filterButtons.slice(0)
+            const currentElement = {
+                ...clonedFilterButtons[action.clickedButton - 1]
+            };
+            currentElement.clicked = !currentElement.clicked
+            clonedFilterButtons.splice(action.clickedButton - 1, 1, currentElement)
+            // filter sizes logic
+            const clonedProductInformations = state.productInformations.slice(0)
+            clonedProductInformations.forEach((product, i) => {
+                const currentProduct = {
+                    ...product
+                };
+                const filterSizes = [];
+                clonedFilterButtons.forEach(e => {
+                    if (e.clicked) {
+                        filterSizes.push(e.value);
+                    }
+                })
+                if (filterSizes.length) {
+                    const filterResult = Boolean(
+                        filterSizes
+                            .map(size => product.sizes.find(el => el === size))
+                            .filter(item => item !== undefined).length
+                    );
+                    currentProduct.isVisible = filterResult;
+                } else {
+                    currentProduct.isVisible = true;
+                }
+                clonedProductInformations.splice(i, 1,currentProduct);
+                clonedProductInformations.sort((a, b) => a.price - b.price);
+            })
+            console.log(clonedProductInformations)
             return {
                 ...state,
-                persons: state.persons.filter(person => person.id !== action.personId)
+                filterButtons: clonedFilterButtons,
+                productInformations: clonedProductInformations
             }
     }
     return state;

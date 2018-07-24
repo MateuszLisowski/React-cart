@@ -71,6 +71,10 @@ h3 {
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  overflow:hidden;
+}
+.cartContent::-scrollbar {
+  display: none; 
 }
 .singleCartProduct {
   display: flex;
@@ -92,4 +96,5 @@ h3 {
 }
 ul {
   list-style-type: none;
+  width: 89%;
 }
