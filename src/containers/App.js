@@ -50,7 +50,6 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-      addItemToCart: (addedProduct) => dispatch({type: actionTypes.ADD_ITEM_TO_CART, addedProduct: addedProduct}),
       buyItems: () => dispatch({type: actionTypes.BUY_ITEMS}),
       removeItem: (elementIndex) => dispatch({type: actionTypes.REMOVE_CART_ITEM, elementIndex: elementIndex})
   }

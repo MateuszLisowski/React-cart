@@ -1,0 +1,17 @@
+.buyButton {
+    position: relative;
+      box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+      color: #fff;
+      background-color: #009688;
+      font-family: monospace;
+      outline: none;
+      width: 90%;
+      margin: 0 auto;
+      border: none;
+      padding: 20px 0;
+      font-size: 20px;
+  }
+  .buyButton:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    background-color: #13746a;
+  }

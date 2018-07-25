@@ -2,23 +2,23 @@ import React, { Component } from 'react';
 import './Filters.css';
 import { connect } from 'react-redux';
 import * as actionTypes from '../../store/actions';
+import Select from './Select/Select';
+import FilterButton from './FillterButton/FilterButton';
 
 class Filters extends Component {
     render() {
         return (
             <div id='filtersWrapper'>
-                <select value={this.props.selectedItem} onChange={(e) => this.props.onSelectChange(e.target.value)}>
-                    <option disabled>Sort by price</option>
-                    <option>Ascending</option>
-                    <option>Descending</option>
-                </select>
+                <Select 
+                    value={this.props.selectedItem} 
+                    onChange={(e) => this.props.onSelectChange(e.target.value)}
+                />
                 {this.props.filterButtons.map(object => {
-                    return <button 
+                    return <FilterButton 
                         className={object.clicked ? 'sizeFilter clickedButton' : 'sizeFilter'} 
                         onClick={() => this.props.filterButtonClick(object.value)} 
-                        key={object.value}> 
-                        {object.value}
-                    </button>
+                        key={object.value}
+                        value={object.value} />
                 })}
             </div>
         );

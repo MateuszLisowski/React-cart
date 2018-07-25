@@ -3,23 +3,3 @@
     align-items: center;
     justify-content: center;
   }
-  .sizeFilter {
-    margin: 0 5px;
-    padding: 0.1em;
-    border: 1px solid #712b2b;
-    color: #585858;
-    background-color: white;
-    font-size: 1.5em;
-    border-radius: 50%;
-    width: 1.5em;
-    height: 1.5em;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    outline: none;
-  }
-  .clickedButton {
-    background-color: black;
-    color: white;
-    border: 1px solid #42420c;
-  }
