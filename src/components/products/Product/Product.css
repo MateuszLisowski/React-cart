@@ -67,11 +67,6 @@ li {
     font-size: 1.7em;
     margin-top: 10px;
   }
-  .clickedButton {
-    background-color: black !important;
-    color: white !important;
-    border: 1px solid #42420c !important;
-  }
 
   .singleProduct {
     list-style-type: none;

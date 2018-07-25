@@ -118,6 +118,7 @@ const initialState = {
         { value: 3, clicked: false },
         { value: 4, clicked: false }
     ],
+    cartItems: []
 };
 
 const reducer = (state = initialState, action) => {
@@ -164,12 +165,38 @@ const reducer = (state = initialState, action) => {
                 clonedProductInformations.splice(i, 1,currentProduct);
                 clonedProductInformations.sort((a, b) => a.price - b.price);
             })
-            console.log(clonedProductInformations)
             return {
                 ...state,
                 filterButtons: clonedFilterButtons,
                 productInformations: clonedProductInformations
             }
+        case actionTypes.ADD_ITEM_TO_CART:
+            if(action.chosenSize) {
+                const clonedCartItems = state.cartItems.slice(0)
+                const productAddedToCart = {
+                    ...action.addedProduct
+                };
+                productAddedToCart.chosenSize = action.chosenSize
+                clonedCartItems.push(productAddedToCart)
+                return {
+                    ...state,
+                    cartItems: clonedCartItems
+                }        
+            }
+        case actionTypes.BUY_ITEMS:
+            const emptyCart = state.cartItems.slice(0)
+            emptyCart.length = 0
+            return {
+                ...state,
+                cartItems: emptyCart
+            } 
+        case actionTypes.REMOVE_CART_ITEM:
+            const updateProductCart = state.cartItems.slice(0)
+            updateProductCart.splice(action.elementIndex, 1)
+            return {
+                ...state,
+                cartItems: updateProductCart
+            }    
     }
     return state;
 };

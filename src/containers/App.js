@@ -24,9 +24,12 @@ class App extends Component {
     return (
       <div className="App">
         <Cart 
-          isCartVisible={this.state.isCartVisible} 
-          showCart={this.showCart} 
-          hideCart={this.hideCart} 
+            isCartVisible={this.state.isCartVisible} 
+            showCart={this.showCart} 
+            hideCart={this.hideCart} 
+            cartItems={this.props.cartItems}
+            buyItems={this.props.buyItems}
+            removeItem={this.props.removeItem}
           />
         <header>
         </header>
@@ -39,17 +42,18 @@ class App extends Component {
   }
 }
 
-// const mapStateToProps = state => {
-//   return {
-//       products: state.productInformations
-//   };
-// };
+const mapStateToProps = state => {
+  return {
+      cartItems: state.cartItems
+  };
+};
 
-// const mapDispatchToProps = dispatch => {
-//   return {
-//       onAddedPerson: (name, age) => dispatch({type: actionTypes.ADD_PERSON, personData: {name: name, age: age}}),
-//       onRemovedPerson: (id) => dispatch({type: actionTypes.REMOVE_PERSON, personId: id})
-//   }
-// };
+const mapDispatchToProps = dispatch => {
+  return {
+      addItemToCart: (addedProduct) => dispatch({type: actionTypes.ADD_ITEM_TO_CART, addedProduct: addedProduct}),
+      buyItems: () => dispatch({type: actionTypes.BUY_ITEMS}),
+      removeItem: (elementIndex) => dispatch({type: actionTypes.REMOVE_CART_ITEM, elementIndex: elementIndex})
+  }
+};
 
-export default connect(null, null)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);

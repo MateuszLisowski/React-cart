@@ -1,0 +1,18 @@
+.singleCartProduct {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 0;
+  }
+  .singleCartProduct > div {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .singleCartProduct > img {
+    width: 45%;
+    margin: 0;
+    height: 100px;
+  }

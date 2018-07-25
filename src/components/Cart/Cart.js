@@ -1,31 +1,23 @@
 import React from 'react';
 import './Cart.css';
 import carticon from '../../assets/carticon.svg';
+import CartItem from './CartItem/Cartitem';
+import Aux from '../../hoc/Aux';
 
-const Cart = ({ isCartVisible, showCart, hideCart }) => {
+const Cart = ({ isCartVisible, showCart, hideCart, cartItems, buyItems, removeItem }) => {
+    const isSomethingInCart = cartItems.length ? 
+    <Aux>
+        <ul>
+            {cartItems.map((item, i) => <CartItem product={item} key={i} removeItem={removeItem} index={i} />)}
+        </ul>
+        <button className='buyButton' onClick={buyItems}>
+                Buy items
+        </button>
+    </Aux> : <p className='addItemToCart'>Add item to cart!</p>
+
     const cartContent = isCartVisible ? 
     <div className='cartContent' onMouseLeave={hideCart}>
-        <ul>
-            <li className='singleCartProduct'>
-                <img src='https://imgurbancity.pl/files/sc_staging_images/brand/full_151/694/921/4_03/13406750.jpg' />
-                <div>
-                    <p>
-                    </p>
-                    <p>
-                        15 zł
-                </p>
-                    <p>
-                        chosen size: 3
-                </p>
-                    <button className='removeItem'>
-                        Remove item
-                </button>
-                </div>
-            </li>
-        </ul>
-        <button className='buyButton'>
-            Buy items
-    </button>
+        {isSomethingInCart}
     </div> 
         : 
     <img src={carticon} className='cartIcon' onMouseOver={showCart} />
@@ -38,3 +30,4 @@ const Cart = ({ isCartVisible, showCart, hideCart }) => {
 }
 
 export default Cart
+
