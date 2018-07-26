@@ -3,13 +3,14 @@ import './Products.css';
 import { connect } from 'react-redux';
 import Product from './Product/Product';
 
-
 class Products extends Component {
   render() {
     return (
       <ul>
         {this.props.products.map((currentElemenent) => {
-          return <Product productData={currentElemenent} key={currentElemenent.id} />
+          return <Product
+            productData={currentElemenent}
+            key={currentElemenent.id} />
         })}
       </ul>
     );
@@ -18,7 +19,7 @@ class Products extends Component {
 
 const mapStateToProps = state => {
   return {
-      products: state.productInformations
+    products: state.productInformations
   };
 };
 

@@ -3,7 +3,7 @@ import './SizeButton.css';
 
 const SizeButton = ({ value, click, isClicked }) => (
     <button onClick={click} className={isClicked}>
-            {value}
+        {value}
     </button>
 );
 

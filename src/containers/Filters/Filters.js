@@ -9,14 +9,14 @@ class Filters extends Component {
     render() {
         return (
             <div id='filtersWrapper'>
-                <Select 
-                    value={this.props.selectedItem} 
+                <Select
+                    value={this.props.selectedItem}
                     onChange={(e) => this.props.onSelectChange(e.target.value)}
                 />
                 {this.props.filterButtons.map(object => {
-                    return <FilterButton 
-                        className={object.clicked ? 'sizeFilter clickedButton' : 'sizeFilter'} 
-                        onClick={() => this.props.filterButtonClick(object.value)} 
+                    return <FilterButton
+                        className={object.clicked ? 'sizeFilter clickedButton' : 'sizeFilter'}
+                        onClick={() => this.props.filterButtonClick(object.value)}
                         key={object.value}
                         value={object.value} />
                 })}

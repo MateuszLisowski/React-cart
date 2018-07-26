@@ -11,8 +11,8 @@ class Product extends Component {
     }
 
     setSize = (size) => {
-        const isCurrentlyClicked = size === this.state.clickedSizeButton ? null : size
-        this.setState({clickedSizeButton: isCurrentlyClicked});
+        const isCurrentlyClicked = size === this.state.clickedSizeButton ? null : size;
+        this.setState({ clickedSizeButton: isCurrentlyClicked });
     }
     
     render() {
@@ -33,11 +33,17 @@ class Product extends Component {
                 </p>
                 <div>
                     {productData.sizes.map((size, index) => {
-                        return <SizeButton isClicked={clickedSizeButton === size ? 'clickedButton' : ''} value={size} key={index} click={() => this.setSize(size)}/>
+                        return <SizeButton 
+                        isClicked={clickedSizeButton === size ? 'clickedButton' : ''} 
+                        value={size} 
+                        key={index} 
+                        click={() => this.setSize(size)} />
                     })}
                 </div>
             </div>
-            <button className='addProduct' onClick={() => this.props.addItemToCart(productData, clickedSizeButton)}>
+            <button 
+                className='addProduct'
+                onClick={() => this.props.addItemToCart(productData, clickedSizeButton)}>
                 Add product
             </button>
         </li> : null

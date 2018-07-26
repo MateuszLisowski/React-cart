@@ -36,7 +36,7 @@ export const filterProducts = (state, action) => {
         } else {
             currentProduct.isVisible = true;
         }
-        clonedProductInformations.splice(i, 1,currentProduct);
+        clonedProductInformations.splice(i, 1, currentProduct);
         clonedProductInformations.sort((a, b) => a.price - b.price);
     })
     return [clonedFilterButtons, clonedProductInformations]

@@ -12,24 +12,24 @@ class App extends Component {
   }
 
   hideCart = () => {
-    this.setState({isCartVisible: false});
+    this.setState({ isCartVisible: false });
   }
 
   showCart = () => {
-    this.setState({isCartVisible: true});
+    this.setState({ isCartVisible: true });
   }
 
   render() {
     return (
       <div className="App">
-        <Cart 
-            isCartVisible={this.state.isCartVisible} 
-            showCart={this.showCart} 
-            hideCart={this.hideCart} 
-            cartItems={this.props.cartItems}
-            buyItems={this.props.buyItems}
-            removeItem={this.props.removeItem}
-          />
+        <Cart
+          isCartVisible={this.state.isCartVisible}
+          showCart={this.showCart}
+          hideCart={this.hideCart}
+          cartItems={this.props.cartItems}
+          buyItems={this.props.buyItems}
+          removeItem={this.props.removeItem}
+        />
         <header>
         </header>
         <main>
@@ -43,14 +43,14 @@ class App extends Component {
 
 const mapStateToProps = state => {
   return {
-      cartItems: state.cartItems
+    cartItems: state.cartItems
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-      buyItems: () => dispatch(buyItems()),
-      removeItem: (elementIndex) => dispatch(removeItem(elementIndex))
+    buyItems: () => dispatch(buyItems()),
+    removeItem: (elementIndex) => dispatch(removeItem(elementIndex))
   }
 };
 
