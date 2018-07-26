@@ -8,7 +8,7 @@ class Products extends Component {
   render() {
     return (
       <ul>
-        {this.props.products.map((currentElemenent,index) => {
+        {this.props.products.map((currentElemenent) => {
           return <Product productData={currentElemenent} key={currentElemenent.id} />
         })}
       </ul>

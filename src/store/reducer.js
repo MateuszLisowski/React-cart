@@ -1,4 +1,4 @@
-import * as actionTypes from './actions';
+import * as actionTypes from './actionTypes';
 import initialState from './initialState';
 import {sortProducts, filterProducts, AddItemToCart, buyItems, removeCartItem} from './helperFunctions';
 

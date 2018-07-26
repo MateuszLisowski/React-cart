@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import './Product.css';
-import SizeButton from './SizeButton/SizeButton';
+import SizeButton from '../../../components/Products/SizeButton/SizeButton';
 import Aux from '../../../hoc/Aux';
 import { connect } from 'react-redux';
-import * as actionTypes from '../../../store/actions';
+import { addItemToCart } from '../../../store/actions';
 
 class Product extends Component {
     state = {
@@ -48,16 +48,10 @@ class Product extends Component {
         );
       }   
     }
-
-const mapStateToProps = state => {
-    return {
-        products: state.productInformations
-    };
-};
     
 const mapDispatchToProps = dispatch => {
     return {
-        addItemToCart: (addedProduct, chosenSize) => dispatch({type: actionTypes.ADD_ITEM_TO_CART, addedProduct: addedProduct, chosenSize: chosenSize})
+        addItemToCart: (addedProduct, chosenSize) => dispatch(addItemToCart(addedProduct, chosenSize))
     }
 };
 

@@ -1,5 +1,35 @@
-export const SORT_PRODUCTS = 'SORT_PRODUCTS';
-export const FILTER_PRODUCTS = 'FILTER_PRODUCTS';
-export const ADD_ITEM_TO_CART = 'ADD_ITEM_TO_CART';
-export const BUY_ITEMS = 'BUY_ITEMS';
-export const REMOVE_CART_ITEM = 'REMOVE_CART_ITEM';
+import * as actionTypes from './actionTypes';
+
+export const addItemToCart = (addedProduct, chosenSize) => {
+    return {
+        type: actionTypes.ADD_ITEM_TO_CART, 
+        addedProduct: addedProduct, 
+        chosenSize: chosenSize
+    }
+}
+
+export const buyItems = () => {
+    return {
+        type: actionTypes.BUY_ITEMS
+    }
+}
+export const removeItem = (elementIndex) => {
+    return {
+        type: actionTypes.REMOVE_CART_ITEM, 
+        elementIndex: elementIndex
+    }
+}
+
+export const onSelectChange = (selectedItem) => {
+    return {
+        type: actionTypes.SORT_PRODUCTS, 
+        selectedItem: selectedItem
+    }
+}
+
+export const filterButtonClick = (clickedButton) => {
+    return {
+        type: actionTypes.FILTER_PRODUCTS, 
+        clickedButton: clickedButton
+    }
+}

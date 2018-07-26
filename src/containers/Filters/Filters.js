@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import './Filters.css';
 import { connect } from 'react-redux';
-import * as actionTypes from '../../store/actions';
-import Select from './Select/Select';
-import FilterButton from './FillterButton/FilterButton';
+import Select from '../../components/Filters/Select/Select';
+import FilterButton from '../../components/Filters/FillterButton/FilterButton';
+import { onSelectChange, filterButtonClick } from '../../store/actions';
 
 class Filters extends Component {
     render() {
@@ -35,8 +35,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onSelectChange: (selectedItem) => dispatch({ type: actionTypes.SORT_PRODUCTS, selectedItem: selectedItem }),
-        filterButtonClick: (clickedButton) => dispatch({ type: actionTypes.FILTER_PRODUCTS, clickedButton: clickedButton })
+        onSelectChange: (selectedItem) => dispatch(onSelectChange(selectedItem)),
+        filterButtonClick: (clickedButton) => dispatch(filterButtonClick(clickedButton))
     }
 };
 

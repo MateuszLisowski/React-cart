@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
-import './App.css';
+import './Layout.css';
 import { connect } from 'react-redux';
-import * as actionTypes from '../store/actions';
-import Products from '../components/products/Products';
-import Cart from '../components/Cart/Cart';
-import Filters from '../components/Filters/Filters';
-
+import Products from '../Products/Products';
+import Cart from '../../components/Cart/Cart';
+import Filters from '../Filters/Filters';
+import { buyItems, removeItem } from '../../store/actions';
 
 class App extends Component {
   state = {
@@ -50,8 +49,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-      buyItems: () => dispatch({type: actionTypes.BUY_ITEMS}),
-      removeItem: (elementIndex) => dispatch({type: actionTypes.REMOVE_CART_ITEM, elementIndex: elementIndex})
+      buyItems: () => dispatch(buyItems()),
+      removeItem: (elementIndex) => dispatch(removeItem(elementIndex))
   }
 };
 
