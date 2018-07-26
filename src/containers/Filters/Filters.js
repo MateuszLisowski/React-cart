@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import Select from '../../components/Filters/Select/Select';
 import FilterButton from '../../components/Filters/FillterButton/FilterButton';
 import { onSelectChange, filterButtonClick } from '../../store/actions';
+import PropTypes from 'prop-types';
 
 class Filters extends Component {
     render() {
@@ -28,8 +29,8 @@ class Filters extends Component {
 
 const mapStateToProps = state => {
     return {
-        selectedItem: state.selectedItem,
-        filterButtons: state.filterButtons
+        filterButtons: state.filterButtons,
+        selectedItem: state.selectedItem
     };
 };
 
@@ -38,6 +39,13 @@ const mapDispatchToProps = dispatch => {
         onSelectChange: (selectedItem) => dispatch(onSelectChange(selectedItem)),
         filterButtonClick: (clickedButton) => dispatch(filterButtonClick(clickedButton))
     }
+};
+
+Filters.propTypes = {
+    onSelectChange: PropTypes.func.isRequired,
+    filterButtonClick: PropTypes.func.isRequired,
+    filterButtons: PropTypes.arrayOf(PropTypes.object).isRequired,
+    selectedItem: PropTypes.string.isRequired
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Filters);

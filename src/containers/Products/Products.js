@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './Products.css';
 import { connect } from 'react-redux';
 import Product from './Product/Product';
+import PropTypes from 'prop-types';
 
 class Products extends Component {
   render() {
@@ -23,4 +24,9 @@ const mapStateToProps = state => {
   };
 };
 
+Products.propTypes = {
+  products: PropTypes.arrayOf(PropTypes.object).isRequired
+};
+
 export default connect(mapStateToProps, null)(Products);
+

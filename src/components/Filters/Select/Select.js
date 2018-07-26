@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const Select = ({value, onChange}) => {
     return (
@@ -9,5 +10,11 @@ const Select = ({value, onChange}) => {
         </select>
     );
 };
+
+Select.propTypes = {
+    value: PropTypes.string.isRequired,
+    onChange: PropTypes.func.isRequired,
+};
+
 
 export default Select;

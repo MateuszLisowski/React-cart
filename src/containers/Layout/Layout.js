@@ -5,6 +5,7 @@ import Products from '../Products/Products';
 import Cart from '../../components/Cart/Cart';
 import Filters from '../Filters/Filters';
 import { buyItems, removeItem } from '../../store/actions';
+import PropTypes from 'prop-types';
 
 class App extends Component {
   state = {
@@ -52,6 +53,12 @@ const mapDispatchToProps = dispatch => {
     buyItems: () => dispatch(buyItems()),
     removeItem: (elementIndex) => dispatch(removeItem(elementIndex))
   }
+};
+
+App.propTypes = {
+  buyItems: PropTypes.func.isRequired,
+  removeItem: PropTypes.func.isRequired,
+  cartItems: PropTypes.arrayOf(PropTypes.object).isRequired
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

@@ -2,13 +2,14 @@ import React from 'react';
 import CartItem from './CartItem/Cartitem';
 import Aux from '../../../hoc/Aux';
 import './CartItems.css';
+import PropTypes from 'prop-types';
 
 const CartItems = ({ cartItems, removeItem, buyItems }) => {
     return (
         <Aux>
             <ul>
                 {cartItems.map((item, i) => {
-                    <CartItem
+                    return <CartItem
                         product={item}
                         key={i}
                         removeItem={removeItem}
@@ -22,6 +23,12 @@ const CartItems = ({ cartItems, removeItem, buyItems }) => {
             </button>
         </Aux>
     );
+};
+
+CartItems.propTypes = {
+    cartItems: PropTypes.arrayOf(PropTypes.object).isRequired, 
+    buyItems: PropTypes.func.isRequired, 
+    removeItem: PropTypes.func.isRequired
 };
 
 export default CartItems;

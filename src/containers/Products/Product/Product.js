@@ -4,6 +4,7 @@ import SizeButton from '../../../components/Products/SizeButton/SizeButton';
 import Aux from '../../../hoc/Aux';
 import { connect } from 'react-redux';
 import { addItemToCart } from '../../../store/actions';
+import PropTypes from 'prop-types'; 
 
 class Product extends Component {
     state = {
@@ -59,6 +60,11 @@ const mapDispatchToProps = dispatch => {
     return {
         addItemToCart: (addedProduct, chosenSize) => dispatch(addItemToCart(addedProduct, chosenSize))
     }
+};
+
+Product.propTypes = {
+    productData: PropTypes.object.isRequired,
+    addItemToCart: PropTypes.func.isRequired
 };
 
 export default connect(null, mapDispatchToProps)(Product);
