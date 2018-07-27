@@ -1,0 +1,5 @@
+@import '../../../mixins/mixins.scss';
+
+.clickedButton {
+    @include colorsConfig(black !important, white !important, 1px solid #42420c !important);
+}

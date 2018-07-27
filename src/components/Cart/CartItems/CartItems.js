@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 const CartItems = ({ cartItems, removeItem, buyItems }) => {
     return (
         <Aux>
-            <ul>
+            <ul className='cartItems'>
                 {cartItems.map((item, i) => {
                     return <CartItem
                         product={item}

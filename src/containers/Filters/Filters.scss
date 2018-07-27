@@ -1,0 +1,5 @@
+@import '../../mixins/mixins.scss';
+
+#filtersWrapper {
+    @include flexConfig(row, center, center);
+}

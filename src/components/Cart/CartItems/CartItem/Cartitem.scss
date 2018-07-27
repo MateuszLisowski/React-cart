@@ -1,0 +1,40 @@
+@import '../../../../mixins/mixins.scss';
+
+@keyframes enteredAnimation {
+    from {
+        @include enterAnimation(translateX(-300%), 5);
+    }
+    to {
+        @include enterAnimation(translateX(0%), 1);
+    }
+}
+
+.singleCartProduct {
+    margin: 20px 0;
+    animation: enteredAnimation 0.8s forwards;
+    transition: 0.1s transform;
+    @include flexConfig(row, center, center);
+    >div {
+        width: 60%;
+        @include flexConfig(column, center, center);
+    }
+    >img {
+        width: 45%;
+        margin: 0;
+        height: 100px;
+    }
+    .removeItem {
+        @include colorsConfig(white, black, 1px solid black);
+        outline: none;
+        box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        padding: 15px 32px;
+        text-decoration: none;
+        font-size: 15px;
+        margin: 6px 2px;
+        cursor: pointer;
+        font-family: monospace;
+        &:hover {
+            @include colorsConfig(#292626, #f1e3e3, 1px solid black);
+        }
+    }
+}

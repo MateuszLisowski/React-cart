@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 class Products extends Component {
   render() {
     return (
-      <ul>
+      <ul className='productsWrapper'>
         {this.props.products.map((currentElemenent) => {
           return <Product
             productData={currentElemenent}

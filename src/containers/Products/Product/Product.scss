@@ -1,0 +1,73 @@
+@import '../../../mixins/mixins.scss';
+
+.singleProduct {
+    animation: enteredAnimation 0.8s forwards;
+    transform: translateX(-300%);
+    z-index: 1;
+    list-style-type: none;
+    font-family: monospace;
+    width: 30%;
+    @include flexConfig(column, center, center);
+    margin: 10px;
+    border: 1px solid black;
+    padding: 20px;
+    box-sizing: border-box;
+    transition: 0.1s transform;
+    &:hover {
+        background-color: #fdfbe7;
+        transform: scale(1.05);
+        z-index: 2;
+        box-shadow: 0 0 20px #000;
+    }
+    .productPrice {
+        font-family: monospace;
+    }
+    .productName {
+        font-size: 1.7em;
+        margin-top: 10px;
+    }
+    img {
+        width: 95%;
+    }
+}
+
+@keyframes enteredAnimation {
+    from {
+        @include enterAnimation(translateX(-300%), 5);
+    }
+    to {
+        @include enterAnimation(translateX(0%), 1);
+    }
+}
+
+.sizes {
+    @include flexConfig(column, center, center);
+    >div {
+        @include flexConfig(row, center, space-around);
+        >button {
+            margin: 5px;
+            border-radius: 50%;
+            outline: none;
+            @include colorsConfig(white, #712b2b, 1px solid #585858);
+            width: 2em;
+            height: 2em;
+        }
+    }
+}
+
+.addProduct {
+    margin: 10px 0;
+    @include colorsConfig(black, white, 1px solid black);
+    width: 80%;
+    padding: 1em 0;
+    font-size: 1em;
+    transition: 0.1s color, 0.2s background-color;
+    &:hover {
+        @include colorsConfig(white, black, 1px solid black);
+    }
+}
+
+p {
+    margin: 5px 0;
+    font-size: 1.2em;
+}

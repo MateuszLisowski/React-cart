@@ -1,0 +1,47 @@
+@import '../../mixins/mixins.scss';
+$font-family: monospace;
+
+.cart {
+    position: fixed;
+    right: 10px;
+    top: 10px;
+    cursor: pointer;
+    z-index: 6;
+    .cartIcon {
+        width: 45px;
+        height: 45px;
+        background-size: 45px 45px;
+        &:hover {
+            opacity: 0;
+        }
+    }
+    .cartContent {
+        right: 0;
+        top: 0;
+        height: 100vh;
+        width: 30vw;
+        overflow: scroll;
+        position: fixed !important;
+        overflow: hidden;
+        @include flexConfig(column, center, center);
+        @include colorsConfig(white, black, none);
+        &::-scrollbar {
+            display: none;
+        }
+    }
+    .addItemToCart {
+        font-size: 25px;
+        font-family: $font-family;
+        font-weight: 300;
+    }
+    h3,
+    ul,
+    h2 {
+        margin: 0;
+        font-family: $font-family;
+    }
+    h3 {
+        font-size: 25px;
+        font-family: $font-family;
+    }
+}

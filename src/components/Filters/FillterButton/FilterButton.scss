@@ -1,0 +1,17 @@
+@import '../../../mixins/mixins.scss';
+
+.sizeFilter {
+    margin: 0 5px;
+    padding: 0.1em;
+    font-size: 1.5em;
+    border-radius: 50%;
+    width: 1.5em;
+    height: 1.5em;
+    outline: none;
+    @include flexConfig(row, center, center);
+    @include colorsConfig(white, #585858, 1px solid #712b2b);
+}
+
+.clickedButton {
+    @include colorsConfig(black, white, 1px solid #42420c);
+}

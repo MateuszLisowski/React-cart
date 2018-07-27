@@ -1,0 +1,9 @@
+@import '../../mixins/mixins.scss';
+
+.productsWrapper {
+    width: 80vw;
+    padding: 0;
+    margin: 10px 0;
+    @include flexConfig(row, center,center);
+    flex-wrap: wrap;
+}
