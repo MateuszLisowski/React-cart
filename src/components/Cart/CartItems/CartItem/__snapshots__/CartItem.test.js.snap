@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CartItem /> renders correctly 1`] = `
+<li
+  className="singleCartProduct"
+>
+  <img
+    alt="product"
+    src="https://imgurbancity.pl/files/sc_staging_images/brand/full_151/694/921/4_03/13406750.jpg"
+  />
+  <div>
+    <p>
+      nike
+    </p>
+    <p>
+      22
+       zł
+    </p>
+    <p>
+      chosen size: 
+      2
+    </p>
+    <button
+      className="removeItem"
+      onClick={[Function]}
+    >
+      Remove item
+    </button>
+  </div>
+</li>
+`;
