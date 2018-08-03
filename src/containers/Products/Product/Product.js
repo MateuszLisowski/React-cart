@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import { addItemToCart } from '../../../store/actions';
 import PropTypes from 'prop-types'; 
 
-class Product extends Component {
+export class Product extends Component {
     state = {
         clickedSizeButton: null
     }
@@ -56,11 +56,9 @@ class Product extends Component {
       }   
     }
     
-const mapDispatchToProps = dispatch => {
-    return {
+const mapDispatchToProps = dispatch => ({
         addItemToCart: (addedProduct, chosenSize) => dispatch(addItemToCart(addedProduct, chosenSize))
-    }
-};
+});
 
 Product.propTypes = {
     productData: PropTypes.object.isRequired,

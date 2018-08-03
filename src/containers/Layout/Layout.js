@@ -7,7 +7,7 @@ import Filters from '../Filters/Filters';
 import { buyItems, removeItem } from '../../store/actions';
 import PropTypes from 'prop-types';
 
-class App extends Component {
+export class App extends Component {
   state = {
     isCartVisible: false
   }
@@ -42,18 +42,14 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
+const mapStateToProps = state => ({
     cartItems: state.cartItems
-  };
-};
+});
 
-const mapDispatchToProps = dispatch => {
-  return {
+const mapDispatchToProps = dispatch => ({
     buyItems: () => dispatch(buyItems()),
     removeItem: (elementIndex) => dispatch(removeItem(elementIndex))
-  }
-};
+});
 
 App.propTypes = {
   buyItems: PropTypes.func.isRequired,
