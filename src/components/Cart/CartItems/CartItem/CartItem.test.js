@@ -26,7 +26,7 @@ describe('<CartItem />', () => {
     })
     describe('correctly read and insert to DOM random props', () => {
         const names = ['Nike', 'Umbro', 'Adidas', 'Puma', 'Reebok', 'Bershka']
-        const products = [...Array(10).keys()].map(() => ({
+        const products = [...Array(30).keys()].map(() => ({
             price: Math.floor(Math.random() * 1000) + 1,
             chosenSize: Math.floor(Math.random() * 4) + 1,
             name: names[Math.floor(Math.random() * 6)]

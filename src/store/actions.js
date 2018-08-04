@@ -1,35 +1,26 @@
-import * as actionTypes from './actionTypes';
+import * as actionTypes from "./actionTypes";
 
-export const addItemToCart = (addedProduct, chosenSize) => {
-    return {
-        type: actionTypes.ADD_ITEM_TO_CART,
-        addedProduct: addedProduct,
-        chosenSize: chosenSize
-    }
-}
+export const addItemToCart = (addedProduct, chosenSize) => ({
+  type: actionTypes.ADD_ITEM_TO_CART,
+  addedProduct: addedProduct,
+  chosenSize: chosenSize
+});
 
-export const buyItems = () => {
-    return {
-        type: actionTypes.BUY_ITEMS
-    }
-}
-export const removeItem = (elementIndex) => {
-    return {
-        type: actionTypes.REMOVE_CART_ITEM,
-        elementIndex: elementIndex
-    }
-}
+export const buyItems = () => ({
+  type: actionTypes.BUY_ITEMS
+});
 
-export const onSelectChange = (selectedItem) => {
-    return {
-        type: actionTypes.SORT_PRODUCTS,
-        selectedItem: selectedItem
-    }
-}
+export const removeItem = elementIndex => ({
+  type: actionTypes.REMOVE_CART_ITEM,
+  elementIndex: elementIndex
+});
 
-export const filterButtonClick = (clickedButton) => {
-    return {
-        type: actionTypes.FILTER_PRODUCTS,
-        clickedButton: clickedButton
-    }
-}
+export const onSelectChange = selectedItem => ({
+  type: actionTypes.SORT_PRODUCTS,
+  selectedItem: selectedItem
+});
+
+export const filterButtonClick = clickedButton => ({
+  type: actionTypes.FILTER_PRODUCTS,
+  clickedButton: clickedButton
+});

@@ -10,7 +10,7 @@ describe('<CartItems />', () => {
     />);
     describe('have correct list length', () => {
         const singleProduct = { name: 'nike', price: 22, chosenSize: 2 }
-        const productItems = [...Array(10).keys()].map(e => {
+        const productItems = [...Array(30).keys()].map(e => {
             return [...Array(e).fill(singleProduct)]
         })
         productItems.forEach(cartItems=> {      
