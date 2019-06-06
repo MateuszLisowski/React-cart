@@ -26,8 +26,7 @@ orbs:
 workflows:
   build:
     jobs:
-      - build:
-          name: "unit tests"
+      - build
       - cypress/run:
           executor: cypress/base-8
           name: "e2e tests"
