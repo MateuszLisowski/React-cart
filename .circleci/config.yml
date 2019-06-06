@@ -22,4 +22,8 @@ jobs:
           command: yarn test
       - run:
           name: e2e tests
+<<<<<<< HEAD
           command: yarn cypress
+=======
+          command: cypress
+>>>>>>> daf99163d266d2d748675b2682a245f0bfde82a9
