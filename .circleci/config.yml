@@ -25,13 +25,20 @@
 #           command: yarn cy:run
 
 version: 2
-build:
-  restore_cache:
+jobs:
+  Restore_cache:
+    docker:
+      - image: circleci/node:8
     steps:
       - key: dependency-cache-{{ checksum "package.json" }}
   Setup Dependencies:
+    docker:
+      - image: circleci/node:8
     steps:
-      - run: Setup Dependencies
+      - run: yarn install
+  # Save cache:
+  #   key: dependency-cache-{{ checksum "package.json" }}
+  #   paths: ./node_modules
   #   command: yarn install
   # run:
   #   name: Add css files to project
