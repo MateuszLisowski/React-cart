@@ -21,8 +21,5 @@ jobs:
           name: Test
           command: yarn test
       - run:
-          name: Test Coverage
-          command: yarn test:coverage
-      - run:
           name: e2e tests
           command: cypress open
