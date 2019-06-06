@@ -59,6 +59,7 @@ workflows:
   version: 2
   as:
     jobs:
+      - build
       - Unit tests
 
   arr:
