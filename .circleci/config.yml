@@ -1,17 +1,8 @@
 version: 2
 jobs:
   build:
-version: 2.1
-    orbs:
-        cypress: cypress-io/cypress@1
-    workflows:
-        build:
-            jobs:
-            - cypress/run:
-                start: npm start
-                wait-on: "http://localhost:3002/"
-    # docker:
-    #   - image: cypress/base:8
+    docker:
+      - image: cypress/base:8
     steps:
       - checkout
       - restore_cache: # special step to restore the dependency cache
@@ -30,5 +21,9 @@ version: 2.1
           name: Test
           command: yarn test
       - run:
+          name: Run localhost
+          command: yarn start
+      - run:
           name: e2e tests
           command: yarn cy:run
+
