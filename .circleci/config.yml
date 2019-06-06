@@ -25,13 +25,13 @@
 #           command: yarn cy:run
 version: 2.1
 jobs:
-  Restore cache:
+  "Restore cache":
     docker:
       - image: circleci/node:8
     steps:
       - checkout
       - run: dependency-cache-{{ checksum "package.json" }}
-  Setup Dependencies:
+  "Setup Dependencies":
     docker:
       - image: circleci/node:8
     steps:
