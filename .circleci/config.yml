@@ -12,7 +12,7 @@ jobs:
           command: yarn install
       - run:
           name: Add css files to project
-          command: build-css
+          command: yarn build-css
       - save_cache: # special step to save the dependency cache
           key: dependency-cache-{{ checksum "package.json" }}
           paths:
