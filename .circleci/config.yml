@@ -30,7 +30,7 @@ workflows:
       - cypress/run:
           executor: cypress/base-8
           requires:
-            - cypress/install
+            - build
           record: true
           yarn: true
           wait-on: "http://localhost:3002/"
