@@ -1,31 +1,47 @@
+# version: 2
+# jobs:
+#   build:
+#     docker:
+#       - image: cypress/base:8
+#     steps:
+#       - checkout
+#       - restore_cache:
+#           key: dependency-cache-{{ checksum "package.json" }}
+#       - run:
+#           name: Setup Dependencies
+#           command: yarn install
+#       - run:
+#           name: Add css files to project
+#           command: yarn build-css
+#       - save_cache:
+#           key: dependency-cache-{{ checksum "package.json" }}
+#           paths:
+#             - ./node_modules
+#       - run:
+#           name: Test
+#           command: yarn test
+#       - run:
+#           name: e2e tests
+#           command: yarn cy:run
+
 version: 2
-workflow:
-  jobs:
-  setup-dependecies:
-    docker:
-      - image: circleci/node:8
+build:
+  restore_cache:
     steps:
-      - checkout
-      - restore_cache:
-          key: dependency-cache-{{ checksum "package.json" }}
-      - run:
-          name: Setup Dependencies
-          command: yarn install
-      - save_cache:
-          key: dependency-cache-{{ checksum "package.json" }}
-          paths:
-            - ./node_modules
-  unit-tests:
-    docker:
-      - image: circleci/node:8
+      - key: dependency-cache-{{ checksum "package.json" }}
+  Setup Dependencies:
     steps:
-      - run:
-          name: Run unit tests
-          command: yarn build-css && yarn test
-  e2e-tests:
-    docker:
-      - image: cypress/base:8
-    steps:
-      - run:
-          name: e2e tests
-          command: yarn cy:run
+      - run: Setup Dependencies
+  #   command: yarn install
+  # run:
+  #   name: Add css files to project
+  #   command: yarn build-css
+  # save_cache:
+  #   key: dependency-cache-{{ checksum "package.json" }}
+  #   paths: ./node_modules
+  # run:
+  #   name: Test
+  #   command: yarn test
+  # run:
+  #   name: e2e tests
+  #   command: yarn cy:run
