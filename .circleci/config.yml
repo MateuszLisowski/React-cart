@@ -1,4 +1,6 @@
-version: 2
+version: 2.1
+orbs:
+  cypress: cypress-io/cypress@1
 jobs:
   build:
     docker:
@@ -20,10 +22,9 @@ jobs:
       - run:
           name: Test
           command: yarn test
-      - run:
-          name: Run localhost
-          command: yarn start
-          background: true
+      - cypress/run:
+          start: npm start
+          wait-on: 'http://localhost:3002/'
       - run:
           name: e2e tests
           command: yarn cy:run
