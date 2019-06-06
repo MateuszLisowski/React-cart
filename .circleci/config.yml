@@ -1,31 +1,27 @@
-version: 2.1
-orbs:
-  cypress: cypress-io/cypress@1
+version: 2
 jobs:
-  build:
+  setup-dependecies:
     docker:
-      - image: cypress/base:8
+      - image: circleci/node:8
     steps:
       - checkout
-      - restore_cache: # special step to restore the dependency cache
+      - restore_cache:
           key: dependency-cache-{{ checksum "package.json" }}
       - run:
           name: Setup Dependencies
           command: yarn install
-      - run:
-          name: Add css files to project
-          command: yarn build-css
-      - save_cache: # special step to save the dependency cache
+      - save_cache:
           key: dependency-cache-{{ checksum "package.json" }}
           paths:
             - ./node_modules
+  unit-tests:
+    steps:
       - run:
-          name: Test
-          command: yarn test
-      - cypress/run:
-          start: npm start
-          wait-on: 'http://localhost:3002/'
-      - run:
+          name: Run unit tests
+          command: yarn build-css && yarn test
+  e2e-tests:
+    steps:
+       - run:
           name: e2e tests
           command: yarn cy:run
 
