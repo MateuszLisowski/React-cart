@@ -20,6 +20,11 @@ jobs:
       - run:
           name: Unit Tests
           command: yarn test
-      - run:
-          name: e2e tests
-          command: cypress run
+
+orbs:
+  cypress: cypress-io/cypress@1
+workflows:
+  build:
+    jobs:
+      - build
+      - cypress/run
