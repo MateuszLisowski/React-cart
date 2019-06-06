@@ -17,9 +17,6 @@ jobs:
           key: dependency-cache-{{ checksum "package.json" }}
           paths:
             - ./node_modules
-      - run:
-          name: Unit Tests
-          command: yarn test
 
 orbs:
   cypress: cypress-io/cypress@1
@@ -27,6 +24,11 @@ workflows:
   build:
     jobs:
       - build
+      - unit tests:
+          name: Unit Tests
+          command: yarn test
+          requires:
+            - build
       - cypress/run:
           executor: cypress/base-8
           requires:
