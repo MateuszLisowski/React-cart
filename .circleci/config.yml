@@ -26,9 +26,14 @@ orbs:
 workflows:
   build:
     jobs:
-      - build
+      - build:
+          name: "unit tests"
       - cypress/run:
           executor: cypress/base-8
-          start: "yarn start"
+          name: "e2e tests"
+          requires:
+            - cypress/install
+          record: true
           yarn: true
           wait-on: "http://localhost:3002/"
+          start: "yarn start"
