@@ -1,5 +1,6 @@
 context("Sorting by prices", () => {
   beforeEach(() => {
+    cy.server();
     cy.visit("http://localhost:3002/");
 
     cy.get("#filtersWrapper")

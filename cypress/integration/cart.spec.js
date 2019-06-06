@@ -1,5 +1,6 @@
 context("Cart", () => {
   beforeEach(() => {
+    cy.server();
     cy.visit("http://localhost:3002/");
 
     cy.get(".productsWrapper")
