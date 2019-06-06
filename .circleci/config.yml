@@ -47,18 +47,12 @@ jobs:
     docker:
       - image: circleci/node:8
     steps:
-      - restore_cache:
-          key: dependency-cache-{{ checksum "package.json" }}
       - run:
           name: Setup Dependencies
           command: yarn install
       - run:
           name: Add css files to project
           command: yarn build-css
-      - save_cache:
-          key: dependency-cache-{{ checksum "package.json" }}
-          paths:
-            - ./node_modules
       - run: yarn test
 
   e2e tests:
