@@ -1,30 +1,31 @@
 version: 2
-jobs:
-  setup-dependecies:
-    docker:
-      - image: circleci/node:8
-    steps:
-      - checkout
-      - restore_cache:
-          key: dependency-cache-{{ checksum "package.json" }}
-      - run:
-          name: Setup Dependencies
-          command: yarn install
-      - save_cache:
-          key: dependency-cache-{{ checksum "package.json" }}
-          paths:
-            - ./node_modules
-  unit-tests:
-    docker:
-      - image: circleci/node:8
-    steps:
-      - run:
-          name: Run unit tests
-          command: yarn build-css && yarn test
-  e2e-tests:
-    docker:
-      - image: cypress/base:8
-    steps:
-      - run:
-          name: e2e tests
-          command: yarn cy:run
+workflows:
+  jobs:
+    setup-dependecies:
+      docker:
+        - image: circleci/node:8
+      steps:
+        - checkout
+        - restore_cache:
+            key: dependency-cache-{{ checksum "package.json" }}
+        - run:
+            name: Setup Dependencies
+            command: yarn install
+        - save_cache:
+            key: dependency-cache-{{ checksum "package.json" }}
+            paths:
+              - ./node_modules
+    unit-tests:
+      docker:
+        - image: circleci/node:8
+      steps:
+        - run:
+            name: Run unit tests
+            command: yarn build-css && yarn test
+    e2e-tests:
+      docker:
+        - image: cypress/base:8
+      steps:
+        - run:
+            name: e2e tests
+            command: yarn cy:run
