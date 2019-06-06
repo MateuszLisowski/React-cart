@@ -10,11 +10,14 @@ jobs:
       - run:
           name: Setup Dependencies
           command: yarn install
+      - run:
+          name: Add css files to project
+          command: build-css
       - save_cache: # special step to save the dependency cache
           key: dependency-cache-{{ checksum "package.json" }}
           paths:
             - ./node_modules
-      - run: # run tests
+      - run:
           name: Test
           command: yarn test
       - run:
