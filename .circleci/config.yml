@@ -21,11 +21,9 @@ jobs:
           name: Unit Tests
           command: yarn test
       - run:
-          name: Waiting for server
-          command: yarn wait-on http://localhost:3000
-      - run:
           name: Run cypress tests
-          command: yarn cy:run
+          command: yarn wait-on http://localhost:3002 && yarn cy:run
+
 
 
 
