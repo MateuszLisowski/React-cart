@@ -29,7 +29,6 @@ workflows:
       - build
       - cypress/run:
           executor: cypress/base-8
-          name: "e2e tests"
           requires:
             - cypress/install
           record: true
