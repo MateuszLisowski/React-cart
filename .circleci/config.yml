@@ -23,7 +23,7 @@
 #       - run:
 #           name: e2e tests
 #           command: yarn cy:run
-version: 2
+version: 2.1
 jobs:
   Restore cache:
     docker:
