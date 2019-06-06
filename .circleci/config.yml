@@ -1,6 +1,6 @@
 version: 2.1
 jobs:
-  build:
+  Unit tests:
     docker:
       - image: cypress/base:8
     steps:
@@ -17,12 +17,6 @@ jobs:
           key: dependency-cache-{{ checksum "package.json" }}
           paths:
             - ./node_modules
-  unit tests:
-    docker:
-      - image: cypress/base:8
-    steps:
-      - restore_cache:
-          key: dependency-cache-{{ checksum "package.json" }}
       - run:
           name: Unit Tests
           command: yarn test
@@ -32,11 +26,10 @@ orbs:
 workflows:
   build:
     jobs:
-      - build
-      - unit tests:
-          requires:
-            - build
+      - Unit tests
       - cypress/run:
+          executor: cypress/base-8
+          cache-key: 'yarn-packages-{{ arch }}-{{ checksum "yarn.lock" }}'
           record: true
           yarn: true
           wait-on: "http://localhost:3002/"
