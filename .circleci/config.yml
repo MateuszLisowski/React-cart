@@ -20,17 +20,9 @@ jobs:
       - run:
           name: Unit Tests
           command: yarn test
+      - run:
+          name: e2e tests
+          command: yarn test:ci
 
-orbs:
-  cypress: cypress-io/cypress@1
-workflows:
-  build:
-    jobs:
-      - Unit tests
-      - cypress/run:
-          executor: cypress/base-8
-          cache-key: 'yarn-packages-{{ arch }}-{{ checksum "yarn.lock" }}'
-          record: true
-          yarn: true
-          wait-on: "http://localhost:3002/"
-          start: "yarn start"
+
+
