@@ -2,27 +2,24 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/node:8
+      - image: cypress/base:8
     steps:
       - checkout
-      - restore_cache: # special step to restore the dependency cache
+      - restore_cache:
           key: dependency-cache-{{ checksum "package.json" }}
       - run:
           name: Setup Dependencies
           command: yarn install
       - run:
           name: Add css files to project
-          command: build-css
-      - save_cache: # special step to save the dependency cache
+          command: yarn build-css
+      - save_cache:
           key: dependency-cache-{{ checksum "package.json" }}
           paths:
             - ./node_modules
       - run:
-          name: Test
+          name: Unit Tests
           command: yarn test
       - run:
-          name: Test Coverage
-          command: yarn test:coverage
-      - run:
           name: e2e tests
-          command: cypress open
+          command: yarn cy:run
