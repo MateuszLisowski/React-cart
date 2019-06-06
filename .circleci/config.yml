@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  Unit tests:
+  build:
     docker:
       - image: cypress/base:8
     steps:
