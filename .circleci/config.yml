@@ -18,7 +18,7 @@ jobs:
           paths:
             - ./node_modules
       - run:
-          name: Test
+          name: Unit Tests
           command: yarn test
       - run:
           name: e2e tests
