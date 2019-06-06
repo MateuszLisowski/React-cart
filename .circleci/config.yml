@@ -17,6 +17,13 @@ jobs:
           key: dependency-cache-{{ checksum "package.json" }}
           paths:
             - ./node_modules
+  unit tests:
+    docker:
+      - image: cypress/base:8
+    steps:
+      - run:
+          name: Unit Tests
+          command: yarn test
 
 orbs:
   cypress: cypress-io/cypress@1
@@ -25,14 +32,9 @@ workflows:
     jobs:
       - build
       - unit tests:
-          name: Unit Tests
-          command: yarn test
           requires:
             - build
       - cypress/run:
-          executor: cypress/base-8
-          requires:
-            - build
           record: true
           yarn: true
           wait-on: "http://localhost:3002/"
