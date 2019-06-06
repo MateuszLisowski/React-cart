@@ -21,6 +21,8 @@ jobs:
     docker:
       - image: cypress/base:8
     steps:
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
       - run:
           name: Unit Tests
           command: yarn test
