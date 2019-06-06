@@ -21,9 +21,7 @@ jobs:
           name: Test
           command: yarn test
       - run:
-          name: Run localhost
-          command: yarn start
-      - run:
           name: e2e tests
-          command: yarn cy:run
+          command: yarn start && yarn cy:run
+
 
