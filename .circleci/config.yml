@@ -69,13 +69,11 @@ jobs:
 
 workflows:
   version: 2
-  as:
+  checks:
     jobs:
+      - checkout
       - build
       - Unit tests
-
-  arr:
-    jobs:
       - e2e tests
   #   command: yarn install
   # run:
