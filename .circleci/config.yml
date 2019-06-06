@@ -1,5 +1,6 @@
 version: 2
-jobs:
+workflow:
+  jobs:
   setup-dependecies:
     docker:
       - image: circleci/node:8
