@@ -21,8 +21,11 @@ jobs:
           name: Unit Tests
           command: yarn test
       - run:
-          name: e2e tests
-          command: yarn test:ci
+          name: Waiting for server
+          command: yarn wait-on http://localhost:3000
+      - run:
+          name: Run cypress tests
+          command: yarn cy:run
 
 
 
