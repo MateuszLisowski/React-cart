@@ -22,5 +22,5 @@ jobs:
           command: yarn test
       - run:
           name: e2e tests
-          command: yarn cypress
+          command: yarn cy:run
 
