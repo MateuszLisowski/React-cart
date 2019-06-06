@@ -28,6 +28,7 @@ workflows:
     jobs:
       - build
       - cypress/run:
-          # yarn: true
-          # start: yarn start
-          wait-on: 'http://localhost:3002/'
+          executor: cypress/base-8
+          start: "yarn start"
+          yarn: true
+          wait-on: "http://localhost:3002/"
