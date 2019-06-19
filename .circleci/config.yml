@@ -23,3 +23,4 @@ jobs:
       - run:
           name: e2e tests
           command: yarn cy:run
+
